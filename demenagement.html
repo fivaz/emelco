@@ -72,8 +72,9 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#111;overf
 .hero-bg.on{transform:scale(1)}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,.1) 100%)}
 .hc{position:relative;z-index:1;max-width:760px;flex-shrink:0}
-.hkick{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.65);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
-.hkick::before{content:'';flex-shrink:0;width:28px;height:0;border-top:1px solid rgba(255,255,255,.5)}
+.hkick{display:flex;align-items:flex-start;gap:10px;max-width:100%;color:rgba(255,255,255,.65);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.hkick::before{content:'';flex-shrink:0;width:28px;height:0;border-top:1px solid rgba(255,255,255,.5);margin-top:.55em}
+.hkick span{flex:1;min-width:0}
 .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,6.5vw,5.5rem);font-weight:800;line-height:.95;color:#fff;margin-bottom:22px;letter-spacing:-.02em}
 .hero h1 .h1-line{display:block;white-space:nowrap}
 .hero h1 .ac{color:var(--accent)}
@@ -150,7 +151,7 @@ footer{background:#0c0c0c;padding:52px 5% 28px}
 .fdots{display:flex;gap:6px}
 .fd{width:8px;height:8px;border-radius:50%}
 @media(max-width:900px){.sgrid{grid-template-columns:repeat(2,1fr)}.zones{grid-template-columns:repeat(2,1fr)}.tgrid{grid-template-columns:1fr}.fi{grid-template-columns:1fr 1fr;gap:28px}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.sgrid{grid-template-columns:1fr}.fi{grid-template-columns:1fr}.nlinks{display:none}.ham{display:flex}.hbtns{flex-direction:column;align-items:flex-start}.cta-btns{flex-direction:column;align-items:center}.stats{grid-template-columns:repeat(2,1fr)}.hkick{font-size:.62rem;letter-spacing:.12em;flex-wrap:wrap;max-width:100%}.sl{font-size:.62rem;letter-spacing:.06em}}
+@media(max-width:640px){.sgrid{grid-template-columns:1fr}.fi{grid-template-columns:1fr}.nlinks{display:none}.ham{display:flex}.hbtns{flex-direction:column;align-items:flex-start}.cta-btns{flex-direction:column;align-items:center}.stats{grid-template-columns:repeat(2,1fr)}.hkick{font-size:.62rem;letter-spacing:.12em}.hkick::before{margin-top:.5em}.sl{font-size:.62rem;letter-spacing:.06em}}
 :root{--accent:#D0312D;--accent-d:#9a1f1c;--accent-light:rgba(208,49,45,.08)}
 </style>
 </head>
@@ -190,7 +191,7 @@ footer{background:#0c0c0c;padding:52px 5% 28px}
 <section class="hero">
   <div class="hero-bg" id="heroBg" style="background-color:#0d3a18;background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=2400&q=82')"></div>
   <div class="hc rv">
-    <div class="hkick">Déménagement & Débarras · Suisse & International</div>
+    <div class="hkick"><span>Déménagement &amp; Débarras · Suisse &amp; International</span></div>
     <h1><span class="h1-line">Déménagement</span><span class="h1-line ac">Sans Stress</span><span class="h1-line">en Suisse.</span></h1>
     <p class="hsub">Local, national ou intercontinental — EMELCO gère votre déménagement de A à Z. Emballage, transport assuré, déballage. Vous vous concentrez sur votre nouvelle vie.</p>
     <div class="hbtns">
