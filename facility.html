@@ -75,6 +75,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#111;overf
 .hkick{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.65);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
 .hkick::before{content:'';flex-shrink:0;width:28px;height:0;border-top:1px solid rgba(255,255,255,.5)}
 .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;line-height:.95;color:#fff;margin-bottom:22px;letter-spacing:-.02em}
+.hero h1 .h1-line{display:block;white-space:nowrap}
 .hero h1 .ac{color:var(--accent)}
 .hsub{color:rgba(255,255,255,.68);font-size:clamp(.88rem,1.4vw,1rem);font-weight:300;max-width:520px;line-height:1.75;margin-bottom:34px}
 .hbtns{display:flex;gap:14px;flex-wrap:wrap}
@@ -190,7 +191,7 @@ footer{background:#0c0c0c;padding:52px 5% 28px}
   <div class="hero-bg" id="heroBg" style="background-color:#3d0a0a;background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=82')"></div>
   <div class="hc rv">
     <div class="hkick">Facility Service & Conciergerie · Suisse Romande</div>
-    <h1>Facility<br><span class="ac">Service</span><br>Complet.</h1>
+    <h1><span class="h1-line">Facility</span><span class="h1-line ac">Service</span><span class="h1-line">Complet.</span></h1>
     <p class="hsub">Gestion intégrale de vos bâtiments : parties communes, maintenance, espaces verts, déneigement, conciergerie et service de réception. Un seul partenaire pour tout.</p>
     <div class="hbtns">
       <a href="index.html#contact" class="btn-w">Devis gratuit → 24h</a>
@@ -359,6 +360,10 @@ ham.addEventListener('click',()=>{mm.classList.toggle('o');ham.classList.toggle(
 document.addEventListener('click',e=>{if(!ham.contains(e.target)&&!mm.contains(e.target))cmm()});
 const obs=new IntersectionObserver(ee=>{ee.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}});},{threshold:0.07});
 document.querySelectorAll('.rv').forEach(el=>{const p=el.parentElement;const sibs=[...p.querySelectorAll(':scope>.rv')];const idx=sibs.indexOf(el);if(idx>0)el.style.transitionDelay=(idx*.1)+'s';obs.observe(el);});
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'})}});});function faq(q){const item=q.parentElement;const open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open');}</script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'})}});});function faq(q){const item=q.parentElement;const open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open');}
+function fitHeroH1(){const h1=document.querySelector('.hero h1');if(!h1)return;const lines=[...h1.querySelectorAll('.h1-line')];if(!lines.length)return;h1.style.fontSize='';let s=parseFloat(getComputedStyle(h1).fontSize),min=12,avail=h1.clientWidth;const over=()=>lines.some(l=>l.scrollWidth>avail);h1.style.fontSize=s+'px';while(over()&&s>min){s-=.5;h1.style.fontSize=s+'px'}}
+let fitT;window.addEventListener('resize',()=>{clearTimeout(fitT);fitT=setTimeout(fitHeroH1,100)});
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fitHeroH1);
+window.addEventListener('load',fitHeroH1);</script>
 </body>
 </html>
